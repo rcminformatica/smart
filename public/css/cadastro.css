@@ -1,0 +1,195 @@
+* {
+  padding: 0;
+
+body {font-family: Verdana, Arial; font-size: 12px; line-height: 18px;  }
+a { text-decoration: none; }
+
+h3 { margin-bottom: 15px; font-size: 22px; text-shadow: 2px 2px 2px #ccc; }
+
+}
+.centraliza {
+     width: 75%;
+     float: none;
+     padding-left: 25%;
+     padding-top: 5%;
+ }
+
+.centralizaCinza {
+    width: 75%;
+    float: none;
+    padding-left: 25%;
+    padding-top: 5%;
+    background-color: #c9c9c9;
+}
+fieldset  {
+    padding-left: 2px;
+    border: 0;
+    padding-top: 5px;
+    background-color: #e7e7e7;
+
+
+}
+fieldset [role="login"]  {
+    padding-left: 2px;
+    border: 0;
+    padding-top: 5px;
+
+
+
+}
+.hint{
+    display:none;
+}
+
+  input, select, textarea, button {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.grupo:before, .grupo:after {
+    content: " ";
+    display: table;
+}
+
+.grupo:after {
+    clear: both;
+}
+
+.campo {
+    margin-bottom: 1em;
+}
+
+
+
+.campo label {
+    margin-bottom: 0.2em;
+    margin-left: 0.2em;
+    color: #666;
+    display: block;
+    text-align: left;
+    font-family: "Arial";
+    font-size: 12px;
+
+}
+
+fieldset.grupo .campo {
+    float:  left;
+    margin-right: 1em;
+}
+
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="url"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+    padding: 0.2em;
+    border: 1px solid #f9f9f9;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.campo  input[type="radio"]
+{
+
+    border: 1px solid #CCC;
+    /*box-shadow: 2px 2px 2px rgba(0,0,0,0.2);*/
+    display: inline-block;
+    vertical-align: middle;
+}
+.campo select option {
+    padding-right: 1em;
+}
+
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    background: #FFC;
+}
+
+.campo label.checkbox {
+    color: #000;
+    display: inline-block;
+    margin-left:
+    margin-right: 1em;
+
+
+}
+
+.botao {
+    font-size: 12px;
+    background: #F90;
+    border: 0;
+    margin-bottom: 1em;
+    color: #FFF;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.botao:hover {
+    background: #FB0;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+
+.botao, select, label.checkbox {
+    cursor: pointer;
+}
+
+
+
+.tbody tr:hover {
+    background: rgba(255,255,0,.3) !important;
+}
+
+
+
+.cabecalho {
+    padding-left: 2px;
+    background-color:  #bbbdbe;;
+    color: #ffffff;
+    font-family: "Arial";
+    font-size: 14px;
+
+
+}
+
+
+.captcha {
+    padding-left: 0px;
+    background-color: #bbbdbe;;
+    color: #ffffff;
+    font-family: "Arial";
+    font-size: 14px;
+
+
+}
+
+.alinhabotao {
+    padding-left: 200px;
+    background-color:  #bbbdbe;;
+    color: #ffffff;
+    font-family: "Arial";
+    font-size: 14px;
+
+
+
+}
+
+
+#secao {
+    background-color: #c7ddef;
+    font-family: Arial;
+    width: 100%;
+    text-align: left;
+
+}
+#secao span {
+
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 16px;
+
+
+}

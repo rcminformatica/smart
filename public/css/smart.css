@@ -1,0 +1,161 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400);
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+input:hover,
+input:disabled,
+
+textarea:hover,
+select:hover,
+button:hover,
+input:active,
+textarea:active,
+select:active,
+select:disabled,
+select:required{background-color: #FFC;},
+button:active,
+input:focus{ background-color: #FFC
+},
+input:disabled{ background-color: #FFC
+},
+textarea:focus,
+select:focus,
+select:disabled,
+button:focus {
+    outline: none;
+}
+.wrapper {
+    display: inline-block;
+    margin-left: 10px;
+    overflow: hidden;
+    padding: 15px 0;
+    position: relative;
+    vertical-align: top;
+}
+.wrapper:first-child {
+    margin-left: 0;
+}
+.wrapper input[type=text] {
+    border: 1px solid #aaa;
+    font-size: 12px;
+    padding: 5px 4px;
+    height: 22px;
+}
+
+.wrapper input[type=text]:focus {background-color: #FFC;},
+.wrapper input[type=text]:disabled {background-color: #FFC;},
+.wrapper input[type=text]:active {
+    border-color: #888;
+
+}
+.wrapper input[type=text]:required {
+    background-color: #FFC;
+}
+.wrapper label  {
+    color: #2980b9;
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0;
+    position: absolute;
+}
+
+
+.TituloForm   {
+
+    margin-left: 5px;
+    font: Verdana;
+    font-size: 18px;
+    font-weight: 250;
+    color: #2980b9;
+}
+
+.SubTituloForm {
+
+    margin-left: 0px;
+    font: Verdana;
+    font-size: 16px;
+    font-weight: 200;
+    color: #7f7f7f;
+}
+
+.wrapper input[type=text]:valid + label {
+    opacity: 1;
+}
+.wrapper input[type=text]:required + label {
+    opacity: 1;
+
+}
+.wrapper input[type=text]:disabled + label {
+    opacity: 1;
+}
+.container {
+    border-top: 2px dashed #ccc;
+    margin: 0;
+    padding: 10px 0;
+    width: auto;
+}
+.container:nth-of-type(1) {
+    border-top: none;
+}
+.container.popup .wrapper label {
+    transition: opacity 0.25s ease-out, top 0.25s ease-out;
+    -webkit-transition: opacity 0.25s ease-out, top 0.25s ease-out;
+    left: 4px;
+    top: 10px;
+}
+.container.popup .wrapper input[type=text]:valid + label {
+    top: 0;
+}
+.container.popup .wrapper input[type=text]:disabled + label {
+    top: 0;
+}
+.container.popup .wrapper input[type=text]:required + label {
+    top: 0;
+
+}
+
+
+.wrapper  .txt50 {
+    width: 50px;
+}
+.wrapper  .txt100 {
+    width: 100px;
+}
+.wrapper  .txt110 {
+    width: 110px;
+}
+
+.wrapper  .txt115 {
+    width: 115px;
+}
+
+.wrapper  .txt200 {
+    width: 200px;
+}
+.wrapper  .txt130 {
+    width: 130px;
+}
+.wrapper  .txt150 {
+    width: 150px;
+}
+.wrapper  .txt200 {
+    width: 200px;
+}
+.wrapper  .txt220 {
+    width: 220px;
+}
+.wrapper  .txt250 {
+    width: 250px;
+}
+.wrapper  .txt300 {
+    width: 300px;
+}
+.wrapper  .txt350 {
+    width: 350px;
+}
+.wrapper  .txt500 {
+    width: 500px;
+}
+
