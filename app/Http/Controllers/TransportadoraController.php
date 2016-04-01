@@ -6,134 +6,139 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-use Smart\Http\Requests\PainelEntradaCreateRequest;
+use Smart\Http\Requests\TransportadoraUpdateRequest;
 use Smart\Http\Requests\LoginRequest;
 use Illuminate\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Auth;
+use Smart\Http\Requests\TransportadoraCreateRequest;
 use Smart\Usuario;
 use Smart\Empresa;
 use Smart\UsuarioEndereco;
+use Smart\Transportadora;
 
 
 use Smart\User;
 use DB;
 use App\Alerta\Alerta;
+use Session;
+
+
+
+
+
+
+
 
 
 
 class TransportadoraController extends Controller
 {
-    private  $empresa;
-    private  $usuario;
-    private  $usuarioendereco;
+    public  $empresa;
+    public  $usuario;
+    public  $usuarioendereco;
+    public  $user;
+    public  $usuarioempresa;
 
 public function __construct(Empresa  $empresa, Usuario $usuario, UsuarioEndereco $usuarioendereco, User $user) {
-    $this->empresa         = $empresa;
-    $this->usuario         = $usuario;
-    $this->usuarioendereco = $usuarioendereco;
-    $this->user            = $user;
+
+    $this->user            = $user::find(Auth::user()->id);
+    $this->empresa         = $empresa::find($this->user->id_empresa);
+    $this->usuario         = $usuario::where('id_user','=',$this->user->id )->get();
+    $this->usuarioempresa  = $usuario::where('id_empresa','=',$this->user->id_empresa );
+    $this->middleware('auth');
+
 
 
 }
 
-
-
     public function index()
     {
-        return 'ok';
+        $transportadoras = Transportadora::where('id_empresa','=',$this->user->id_empresa)->paginate(10);
+
+       return view('transportadora.TransportadoraIndex',['transportadoras'=>$transportadoras]);
     }
 
 
 
     public function create()
     {
-        return view('transportadora.create');
+        return view('transportadora.TransportadoraCreate');
+
+    }
+
+
+    public function edit($id)
+    {
+
+        return view('transportadora.TransportadoraEdit')
+            ->with('r1', Transportadora::find($id));
+
+
+        // return view('layouts.frmCadastroEmbarcadorConfirmacao');
+    }
+    public  function  update(TransportadoraUpdateRequest $request){
+
+        $empresa   = Transportadora::where('id', '=', $request['id'] )->update(array(
+            'cd_interno'               => $request['cd_interno'],
+            'ds_nome_fantasia'         => $request['ds_nome_fantasia'],
+            'cep'                     => $request['cep'],
+            'ds_cidade'               => $request['ds_cidade'],
+            'sg_uf'                   => $request['sg_uf'],
+            'ds_bairro'               => $request['ds_bairro'],
+            'ds_endereco'             => $request['ds_endereco'],
+            'ds_endereco_complemento' => $request['ds_endereco_complemento'],
+            'nu_endereco'             => $request['nu_endereco'],
+            'ibge'                    => $request['ibge'],
+            'ds_endereco_complemento' => $request['ds_endereco_complemento']
+
+        ));
+        // notify()->flash('Os dados da Empresa foram atualizados com sucesso!', 'success');
+        Session::flash('message','Os dados da Transportadora foram atualizados com sucesso!');
+        return redirect(route('painel/transportadora.index'));
+        //atualiza camada do login
+    }
+
+    public function destroy($id)
+    {
+        $transportadora   = Transportadora::find($id)->delete();
+
+
+
+        // notify()->flash('Os dados da Empresa foram atualizados com sucesso!', 'success');
+        Session::flash('message','Transportadora excluída com sucesso!');
+        return redirect(route('painel/transportadora.index'));
+        //atualiza camada do login
 
         // return view('layouts.frmCadastroEmbarcadorConfirmacao');
     }
 
 
-    public function editar($id)
-    {
-        return view('edit')
-            ->with('user', User::find($id));
+    public  function  store(TransportadoraCreateRequest $request){
 
 
-        // return view('layouts.frmCadastroEmbarcadorConfirmacao');
-    }
 
 
-    public function ok()
-    {
-
-        // return view('layouts.frmCadastroEmbarcadorConfirmacao');
-    }
-
-
-    public function store(PainelEntradaCreateRequest $request)
-    {
-        $empresa =  new Empresa;
-
-        $empresa = Empresa::create([
-        'ds_razao_social'  => $request['ds_razao_social'],
-        'cnpj'             => $request['cnpj'],
-        'ie'               => $request['ie'],
+        $transportadora   = Transportadora::create([
+            'id_empresa'               =>$this->user->id_empresa,
+            'cd_interno'               => $request['cd_interno'],
+            'ds_razao_social'          => $request['ds_razao_social'],
+            'ds_nome_fantasia'         => $request['ds_nome_fantasia'],
+            'cnpj'                     => $request['cnpj'],
+            'cep'                     => $request['cep'],
+            'ds_cidade'               => $request['ds_cidade'],
+            'sg_uf'                   => $request['sg_uf'],
+            'ds_bairro'               => $request['ds_bairro'],
+            'ds_endereco'             => $request['ds_endereco'],
+            'ds_endereco_complemento' => $request['ds_endereco_complemento'],
+            'nu_endereco'             => $request['nu_endereco'],
+            'ibge'                    => $request['ibge'],
+            'ds_endereco_complemento' => $request['ds_endereco_complemento'],
         ]);
-
-        $usuario = new Usuario;
-
-        $usuario = Usuario::create([
-            'cd_empresa' => $empresa->id,
-            'cnpj'       => $empresa->cnpj,
-            'nm_usuario' => $request['nm_usuario'],
-            'ds_email'   => $request['ds_email'],
-            'cd_senha'   => $request['cd_senha'],
-        ]);
-        $user = User::create([
-            'name'          => $request['nm_usuario'],
-            'email'         => $request['ds_email'],
-            'password'      => bcrypt($request['password']),
-            'cd_empresa'    => $empresa->id,
-        ]);
-
-        /*
-
-
-         $usuarios = Usuarios::insert(
-            array('ds_razao_social'             => $request->input('ds_razao_social')               ,
-                'ds_nome_fantasia'              => $request->input('ds_nome_fantasia')               ,
-                'cnpj'                          => $request->input('cnpj')                           ,
-                'ie'                            => $request->input('ie')                             ,
-                'ds_email'                      => $request->input('ds_email')                       ,
-                'cd_senha'                      => $request->input('cd_senha')                       ,
-                'cd_idioma'                     => $request->input('cd_idioma')                      ,
-                'cep'                           => $request->input('cep')                            ,
-                'ds_endereco'                   => $request->input('ds_endereco')                    ,
-                'nu_endereco_numero'            => $request->input('nu_endereco_numero')             ,
-                'ds_endereco_complemento'       => $request->input('ds_endereco_complemento')        ,
-                'ds_bairro'                     => $request->input('ds_bairro')                      ,
-                'ds_cidade'                     => $request->input('ds_cidade')                      ,
-                'cd_cidade_ibge'                => $request->input('cd_cidade_ibge')                 ,
-                'sg_uf'                         => $request->input('sg_uf')                          ,
-                'tp_usuario'                    => $request->input('tp_usuario')                     ,
-                'logotipo'                      => $request->input('logotipo')                       ,
-                'id_ativo'                      => $request->input('id_ativo')                       ,
-                'created_at'                    => $request->input('created_at')                     ,
-                'updated_at'                    => $request->input('updated_at') ));
-*/
-        // Session::flash('message','Usuario Cadastrado com Sucesso!');
-        //   return redirect('/cadastro')->with('message','store');
-
-        //Session::flash('message','Usuario Actualizado Correctamente');
-        // notify()->flash('Usuário Cadastrado com Sucesso!!','');
-
-        notify()->flash('Cadastro realizado com sucesso!', 'success');
-        return view('layouts.frmCadastroEmbarcadorConfirmacao');
-
-        //Alerta::add('alerta', ['text' => 'Confirma?', 'title' => 'Listado' ]);
-
-
+        // notify()->flash('Os dados da Empresa foram atualizados com sucesso!', 'success');
+        Session::flash('message','Transportadora cadastrada com sucesso!');
+        return redirect(route('painel/transportadora.index'));
+        //atualiza camada do login
     }
 
 

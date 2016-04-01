@@ -9,8 +9,8 @@ class UsuarioEndereco extends Model
     protected $table = "td_usuario_endereco";
 
     protected $fillable = [
-        'cd_usuario',
-        'cd_empresa',
+        'id_usuario',
+        'id_empresa',
         'cnpj',
         'cep',
         'ds_endereco',

@@ -2,7 +2,7 @@
 	@section('content')
 	@include('alerts.request')
 
-	{{ Form::model($user, array('route' => array('transportadora.ok', $user->id))) }}
+	{{ Form::model($user, array('route' => array('cadastro', $user->id))) }}
 
 		<!-- name -->
 {{ Form::label('name', 'Name') }}

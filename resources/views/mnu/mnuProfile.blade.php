@@ -2,10 +2,13 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-building"></i> Empresa<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-gear fa-fw"></i> Configurações<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{!! route('profile.index')!!} "><i class="fa fa-pencil"></i> Editar</a>
+                                <a href="{!! route('profile.index')!!} "><i class="fa fa-building"></i> Empresa</a>
+                            </li>
+                            <li>
+                                <a href="{!! route('profile.UsuarioIndex')!!}"><i class="fa fa-user"></i> Usuario</a>
                             </li>
                         </ul>
                     </li>
@@ -31,8 +34,12 @@
                                 <a href="#"><i class='fa fa-list-ol fa-fw'></i> Generos</a>
                             </li>
                         </ul>
+
+
                     </li>
 
                 </ul>
+
+
             </div>
         </div>

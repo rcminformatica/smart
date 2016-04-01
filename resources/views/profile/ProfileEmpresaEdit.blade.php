@@ -3,8 +3,10 @@
 @section('menu')
 	@include('mnu.mnuProfile')
 @section('content')
+	{!!Html::script('js/cep.js')!!}
+
 	@include('alerts.request')
-	{!!Form::open(['route'=>'profile.updateEmpresa', 'method'=>'POST'])!!}
-	@include('profile.forms.profile')
+	{!!Form::open(['route'=>'profile.EmpresaUpdate', 'method'=>'POST'])!!}
+	@include('profile.forms.frmProfileEmpresaEdit')
 	{!!Form::close()!!}
 @endsection

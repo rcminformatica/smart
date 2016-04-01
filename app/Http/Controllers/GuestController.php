@@ -64,20 +64,23 @@ class GuestController extends Controller
                                     'ie'               => $request['ie'],
          ]);
 
-        $usuario = new Usuario;
-
-        $usuario = Usuario::create([
-                                    'cd_empresa' => $empresa->id,
-                                    'cnpj'       => $empresa->cnpj,
-                                    'nm_usuario' => $request['nm_usuario'],
-                                    'ds_email'   => $request['ds_email'],
-                                    'cd_senha'   => $request['cd_senha'],
-        ]);
         $user = User::create([
             'name' => $request['nm_usuario'],
-            'email' => $request['ds_email'],
+            'email' => $request['email'],
             'password' => bcrypt($request['password']),
+            'id_empresa' => $empresa->id,
         ]);
+        $usuario = new Usuario;
+
+        $usuario = Usuario::create(['id_user'    => $user->id,
+                                    'id_empresa' => $empresa->id,
+                                    'cnpj'       => $empresa->cnpj,
+                                    'nm_usuario' => $request['nm_usuario'],
+                                    'email'   => $request['email'],
+                                    'cd_senha'   => $request['cd_senha'],
+                                    'id_empresa' => $empresa->id,
+        ]);
+
 
         /*
 
@@ -110,7 +113,7 @@ class GuestController extends Controller
        //Session::flash('message','Usuario Actualizado Correctamente');
        // notify()->flash('Usuário Cadastrado com Sucesso!!','');
 
-        notify()->flash('Cadastro realizado com sucesso!', 'success');
+        notify()->flash('cadastro realizado com sucesso!', 'success');
         return view('layouts.frmCadastroEmbarcadorConfirmacao');
 
         //Alerta::add('alerta', ['text' => 'Confirma?', 'title' => 'Listado' ]);

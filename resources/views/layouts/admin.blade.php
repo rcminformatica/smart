@@ -6,12 +6,27 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    {!!Html::style('css/bootstrap.min.css')!!}
+
+
+    <title>SMART | Frete Cotação </title>
+
+
+
+    {!!Html::style('css/bootstrap.css')!!}
+
+
     {!!Html::style('css/metisMenu.min.css')!!}
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
     {!!Html::style('css/smart.css')!!}
+
+            <!-- SWEET ALERT -->
+
+    <link rel="stylesheet" href="css/sweetalert.min.css">
+    <script src="js/sweetalert.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
@@ -56,11 +71,22 @@
     </div>
 
 </div>
+
 {!!Html::script('js/mascara.js')!!}
 {!!Html::script('js/jquery.min.js')!!}
-{!!Html::script('js/bootstrap.min.js')!!}
+
+
+
+{!!Html::script('js/bootstrap.js')!!}
+{!!Html::script('js/bootstrap-confirmation.js')!!}
+        <!-- popup de confirmacao -->
+{!!Html::script('js/confirmation.js')!!}
 {!!Html::script('js/metisMenu.min.js')!!}
 {!!Html::script('js/sb-admin-2.js')!!}
+
+{!!Html::script('js/sweetalert.js')!!}
+
+
 
 </body>
 

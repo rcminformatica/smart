@@ -33,7 +33,9 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Smart\Console\Kernel::class
+    Smart\Console\Kernel::class,
+    Smart\Exceptions\WhoopsHandler::class,
+    Smart\Exceptions\Handler::class
 );
 
 $app->singleton(

@@ -2303,6 +2303,7 @@ font-weight: 700;
 	margin-top: 0px;
 }
 
+
 .login     {
 
 	width: 35%;
@@ -2453,4 +2454,18 @@ font-weight: 700;
 	padding:4px 0 4px 20px;
 	margin-left: 100px;
 
+}
+
+.rcmlogoentrada     {
+
+	width: 100%;
+	height: 350px;
+	background-color: white;
+	display: block;
+	position: center;
+	background: url('../img/corporate/logo_oficial.jpg') no-repeat 500px 50%;
+	float: inherit;
+	/* z-index: 51; */
+
+	margin-top: 100px;
 }

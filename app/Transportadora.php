@@ -12,24 +12,29 @@ class Transportadora extends Model
 
     protected $table = 'td_transportadora';
     protected $fillable = [
-        'cd_empresa'			    ,
-        'cd_interno'			    ,
+        'id'                    ,
+        'id_empresa'                ,
+        'cd_interno'                ,
         'ds_razao_social'			,
         'ds_nome_fantasia'			,
         'cnpj'						,
         'ie'						,
         'cep'						,
         'ds_endereco'				,
-        'nu_endereco_numero'		,
+        'nu_endereco'	          	,
         'ds_endereco_complemento'	,
         'ds_bairro'				    ,
         'ds_cidade'				    ,
         'cd_cidade_ibge'			,
         'sg_uf'					    ,
+        'tp_empresa'				,
+        'ibge'                      ,
         'logotipo'					,
         'id_ativo'					,
         'created_at'				,
-        'updated_at'				];
+        'updated_at'				,
+        'deleted_at'
+    ];
 
     protected $hidden = [];
 }

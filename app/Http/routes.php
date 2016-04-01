@@ -15,9 +15,15 @@ Route::group(['as' => 'profile.', 'middleware' => 'admin','prefix' => 'profile']
 //Route::group(['as' => 'usuarios.',  'prefix' => 'usuarios'], function()
 {
 
-    Route::get('/', 		           ['as'  => 'index' ,  'uses' =>                'ProfileController@index']);
-    Route::post('updateEmpresa', 	   ['as'  => 'updateEmpresa' ,  'uses' =>        'ProfileController@UpdateEmpresa']);
-
+    Route::get('empresa', 		                  ['as'   => 'index'         ,   'uses'  =>         'ProfileController@index']);
+    Route::get('usuario',                     ['as'   => 'UsuarioIndex'  ,   'uses' =>          'ProfileController@UsuarioIndex']);
+    Route::get('usuario/edit/{id}',               ['as'   => 'UsuarioEdit'   ,   'uses' =>          'ProfileController@UsuarioEdit']);
+    Route::post('usuario/update',             ['as'   => 'UsuarioUpdate' ,   'uses' =>          'ProfileController@UsuarioUpdate']);
+    Route::get('usuario/create',              ['as'   => 'UsuarioCreate' ,   'uses' =>          'ProfileController@UsuarioCreate']);
+    Route::post('usuario/store',              ['as'   => 'UsuarioStore'  ,   'uses' =>          'ProfileController@UsuarioStore']);
+    Route::get('usuario/destroy/{id}',            ['as'   => 'UsuarioDestroy'  , 'uses' =>          'ProfileController@UsuarioDestroy']);
+    Route::post('usuario/search}',            ['as'   => 'UsuarioSearch'  , 'uses' =>          'ProfileController@UsuarioSearch']);
+    Route::post('empresa/update',      	          ['as'   => 'EmpresaUpdate' ,   'uses'  =>         'ProfileController@EmpresaUpdate']);
 
 
 });
@@ -33,15 +39,31 @@ Route::group(['as' => 'painel.', 'middleware' => 'admin','prefix' => 'painel'], 
     Route::get('sistemas',     ['as' => 'sistemas' ,  'uses' =>             'PainelController@sistemas']);
 
 
+//TRANSPORTADORA
+    Route::group(['as' => 'transportadora.', 'middleware' => 'admin','prefix' => 'transportadora'], function()
+//Route::group(['as' => 'usuarios.',  'prefix' => 'usuarios'], function()
+    {
+
+        Route::get('/', 		                    ['as'   => 'index'    ,   'uses'  =>         'TransportadoraController@index']);
+
+        Route::get('create',                        ['as'   => 'create'   ,   'uses' =>          'TransportadoraController@create']);
+        Route::post('update',                        ['as'   => 'update'    ,   'uses' =>          'TransportadoraController@update']);
+        Route::post('store',                        ['as'   => 'store'    ,   'uses' =>          'TransportadoraController@store']);
+        Route::get('edit/{id}',                     ['as'   => 'edit'    ,   'uses' =>        'TransportadoraController@edit']);
+        Route::get('destroy/{id}',                 ['as'   => 'destroy'    ,   'uses' =>        'TransportadoraController@destroy']);
+
+
+
+    });
+
 });
-Route::group(['as' => 'transportadora.', 'middleware' => 'admin','prefix' => 'transportadora'], function()
+Route::group(['as' => 'cadastro.', 'middleware' => 'admin','prefix' => 'cadastro'], function()
 //Route::group(['as' => 'usuarios.',  'prefix' => 'usuarios'], function()
 {
     Route::get('/',               ['as' => 'index' ,  'uses' =>                   'TransportadoraController@index']);
     Route::get('adicionar',       ['as' => 'create' ,   'uses' =>                    'TransportadoraController@create']);
     Route::get('salvar',          ['as' => 'store' ,   'uses' =>                    'TransportadoraController@store']);
     Route::get('editar/{id}',     ['as' => 'edit' ,   'uses' =>                    'TransportadoraController@editar']);
-    Route::post('ok',             ['as' => 'ok' ,   'uses' =>                    'TransportadoraController@ok']);
 
 
 

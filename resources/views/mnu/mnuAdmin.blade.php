@@ -2,13 +2,13 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-truck fa-fw"></i> Transportadoras<span class="fa arrow"></span></a>
+                        <a href="{!! route('painel.transportadora.index')!!}"><i class="fa fa-truck fa-fw"></i> Transportadoras<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{!! route('painel.index')!!} "><i class='fa fa-plus fa-fw'></i> Adicionar</a>
+                                <a href="{!! route('painel.transportadora.create')!!} "><i class='fa fa-plus fa-fw'></i> Adicionar</a>
                             </li>
                             <li>
-                                <a href="{!!URL::to('painel.index')!!}"><i class='fa fa-list-ol fa-fw'></i> Usuarios</a>
+                                <a href="{!! route('painel.transportadora.index')!!} "> <i class='fa fa-list-ol fa-fw'></i> Listar</a>
                             </li>
                         </ul>
                     </li>

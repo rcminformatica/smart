@@ -9,7 +9,7 @@
 namespace Smart\Http\Requests;
 
 
-class ProfileUpdateEmpresaRequest extends Request
+class TransportadoraCreateRequest extends Request
 {
 
 
@@ -28,19 +28,21 @@ class ProfileUpdateEmpresaRequest extends Request
         $this->sanitize();
 
         return [
-            'cd_empresa'        => 'require' ,
+            'ds_nome_fantasia'  => 'required',
+            'cd_interno'        => 'required',
             'cep'               => 'required|min:8',
             'nu_endereco'       => 'required',
             'ds_endereco'       => 'required',
-           // 'cnpj'              => 'required',
-          //  'ds_razao_social'   => 'required',
+            'ibge'              => 'required|min:7',
+            'ds_endereco_complemento' => '',
             'ds_cidade'         => 'required',
             'sg_uf'             => 'required',
-         //   'cnpj'                  => 'required|min:14',
-        //    'ds_razao_social'       => 'required',
+            'cnpj'                  => 'required|min:14',
+            'ds_razao_social'       => 'required',
         ];
         $messages = array(
-            'cep.min' => 'O CEO deve conter 8 caracteres!',
+            'cep.min' => 'O CEP deve conter 8 caracteres!',
+
         );
 
     }
@@ -49,9 +51,9 @@ class ProfileUpdateEmpresaRequest extends Request
     {
         $input = $this->all();
 
-      //  $input['cnpj'] = preg_replace("/[^0-9]/", "", $input['cnpj']);
-        $input['cep'] = preg_replace("/[^0-9]/", "", $input['cep']);
-
+        $input['cnpj'] = preg_replace("/[^0-9]/", "", $input['cnpj']);
+        $input['ie']   = preg_replace("/[^0-9]/", "", $input['ie']);
+        $input['cep']   = preg_replace("/[^0-9]/", "", $input['cep']);
 
         $this->replace($input);
 

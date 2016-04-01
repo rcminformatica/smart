@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -157,6 +158,8 @@ return [
         Smart\Providers\RouteServiceProvider::class,
         Codecourse\Notify\NotifyServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Cagartner\CorreiosConsulta\ServiceProvider::class,
+
 
         /*
        * Laravel Collective Service Providers...
@@ -214,6 +217,7 @@ return [
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'Utils' => JansenFelipe\Utils\Utils::class,
         'Mask' => JansenFelipe\Utils\Mask::class,
+        'Correios'    => Cagartner\CorreiosConsulta\Facade::class,
     ],
 
 ];

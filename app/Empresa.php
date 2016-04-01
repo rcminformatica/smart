@@ -12,14 +12,12 @@ class Empresa extends Model
 
     protected $table = 'td_empresa';
     protected $fillable = [
-        'cd_empresa'                ,
+        'id'                ,
         'cd_interno'                ,
         'ds_razao_social'			,
         'ds_nome_fantasia'			,
         'cnpj'						,
         'ie'						,
-        'cd_senha'					,
-        'cd_idioma'				    ,
         'cep'						,
         'ds_endereco'				,
         'nu_endereco'	          	,
@@ -29,10 +27,13 @@ class Empresa extends Model
         'cd_cidade_ibge'			,
         'sg_uf'					    ,
         'tp_empresa'				,
+        'ibge'                      ,
         'logotipo'					,
         'id_ativo'					,
         'created_at'				,
-        'updated_at'				];
+        'updated_at'				,
+        'deleted_at'
+    ];
 
     protected $hidden = [];
 }

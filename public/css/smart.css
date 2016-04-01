@@ -38,6 +38,12 @@ button:focus {
     margin-left: 0;
 }
 .wrapper input[type=text] {
+     border: 1px solid #aaa;
+     font-size: 12px;
+     padding: 5px 4px;
+     height: 22px;
+ }
+.wrapper input[type=password] {
     border: 1px solid #aaa;
     font-size: 12px;
     padding: 5px 4px;
@@ -53,32 +59,23 @@ button:focus {
 .wrapper input[type=text]:required {
     background-color: #FFC;
 }
+.wrapper input[type=password]:focus {background-color: #FFC;},
+.wrapper input[type=password]:disabled {background-color: #FFC;},
+.wrapper input[type=password]:active {
+    border-color: #888;
+
+}
+.wrapper input[type=password]:required {
+    background-color: #FFC;
+}
 .wrapper label  {
     color: #2980b9;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: bold;
     opacity: 0;
     position: absolute;
 }
 
-
-.TituloForm   {
-
-    margin-left: 5px;
-    font: Verdana;
-    font-size: 18px;
-    font-weight: 250;
-    color: #2980b9;
-}
-
-.SubTituloForm {
-
-    margin-left: 0px;
-    font: Verdana;
-    font-size: 16px;
-    font-weight: 200;
-    color: #7f7f7f;
-}
 
 .wrapper input[type=text]:valid + label {
     opacity: 1;
@@ -90,6 +87,19 @@ button:focus {
 .wrapper input[type=text]:disabled + label {
     opacity: 1;
 }
+
+
+.wrapper input[type=password]:valid + label {
+    opacity: 1;
+}
+.wrapper input[type=password]:required + label {
+    opacity: 1;
+
+}
+.wrapper input[type=password]:disabled + label {
+    opacity: 1;
+}
+
 .container {
     border-top: 2px dashed #ccc;
     margin: 0;
@@ -116,9 +126,25 @@ button:focus {
 
 }
 
+.container.popup .wrapper input[type=password]:valid + label {
+    top: 0;
+}
+.container.popup .wrapper input[type=password]:disabled + label {
+    top: 0;
+}
+.container.popup .wrapper input[type=password]:required + label {
+    top: 0;
+
+}
 
 .wrapper  .txt50 {
     width: 50px;
+}
+.wrapper  .txt60 {
+    width: 60px;
+}
+.wrapper  .txt70 {
+    width: 70px;
 }
 .wrapper  .txt100 {
     width: 100px;
@@ -159,3 +185,45 @@ button:focus {
     width: 500px;
 }
 
+
+.TituloForm   {
+
+    margin-left: 5px;
+    font: Verdana;
+    font-size: 18px;
+
+    color: #2980b9;
+    letter-spacing: 1px;
+}
+
+
+
+.SubTituloForm {
+
+    margin-left: 0px;
+    font: Verdana;
+    font-size: 16px;
+    font-weight: 200;
+    color: #7f7f7f;
+}
+
+
+thead  {
+    margin-left: 5px;
+    font: Arial;
+    font-size: 12px;
+    font-weight: 200;
+    width: 100%;
+
+    color: #2980b9;
+}
+
+tbody  {
+    margin-left: 5px;
+    font: Arial;
+    font-size: 12px;
+    font-weight: 300;
+
+
+    color: #000000;
+}

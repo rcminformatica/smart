@@ -8,5 +8,6 @@
 
 		{!!Form::open(['route'=>['usuario.destroy', $user], 'method' => 'DELETE'])!!}
 			{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
+
 		{!!Form::close()!!}
 	@endsection

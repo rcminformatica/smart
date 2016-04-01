@@ -1,6 +1,7 @@
 @extends('layouts.principal')
 @section('content')
 @include('alerts.request')
+{!!Html::script('js/cep.js')!!}
 
 <!--	  <div class="contact-content">
     <div class="top-header span_top">
@@ -50,7 +51,7 @@
 
         <div class="campo">
             <label for="cep">CEP:</label>
-            <input type="text" id="cep" name="cep" onkeypress="mascara(this, 'cep')" maxlength="9" style="width: 80px"  value="" />
+            <input type="text" id="cep" name="cep" onkeypress="mascara(this, 'cep')" onblur="pesquisacep(this.value);"  maxlength="9" style="width: 80px"  value="" />
         </div>
         <div class="campo">
             <label for="ds_endereco">Endereço:</label>
@@ -58,7 +59,7 @@
         </div>
         <div class="campo">
             <label for="ds_endereco_numero">Número:</label>
-            <input type="text" id="ds_endereco" name="ds_endereco" maxlength="10" style="width: 85px"  value="" />
+            <input type="text" id="ds_endereco_numero" name="ds_endereco_numero" maxlength="10" style="width: 85px"  value="" />
         </div>
         <div class="campo">
             <label for="ds_endereco_complemento">Complemento:</label>
@@ -71,8 +72,9 @@
     </fieldset>
     <fieldset class="grupo">
         <div class="campo">
-            <label for="cidade">Cidade</label>
-            <input type="text" id="cidade" name="cidade" maxlength="72" style="width: 20em" value="" />
+            <label for="ds_cidade">Cidade</label>
+            <input type="text" id="ds_cidade" name="ds_cidade" maxlength="72" style="width: 20em" value="" />
+            <input type="hidden" id="ibge" name="ibge" maxlength="72" style="width: 20em" value="" />
         </div>
         <div class="campo">
             <label for="sg_uf">UF</label>
@@ -126,12 +128,12 @@
     </fieldset>
     <fieldset class="grupo"> <!-- E-MAIL  -->
         <div class="campo">
-            <label for="ds_email">E-mail:</label>
-            <input type="text" id="ds_email" name="ds_email" maxlength="100"style="width:250px"  value="" />
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" name="email" maxlength="100"style="width:250px"  value="" />
         </div>
         <div class="campo">
-            <label for="ds_email">Confirme seu E-mail:</label>
-            <input type="text" id="conf_ds_email" name="conf_ds_email"  maxlength="100"style="width:250px"  value="" />
+            <label for="conf_email">Confirme seu E-mail:</label>
+            <input type="text" id="conf_email" name="conf_email"  maxlength="100"style="width:250px"  value="" />
         </div>
     </fieldset>
     <fieldset class="grupo"> <!-- PASSWORD -->
